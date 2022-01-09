@@ -1,0 +1,4 @@
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:/Users/zhuzhibin/data/idea/docker-spring/src/main/resources/docker-spring.db

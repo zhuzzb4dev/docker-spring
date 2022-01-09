@@ -1,6 +1,7 @@
 package gq.zhuzhibin.open.dockerspring.controller;
 
 import gq.zhuzhibin.open.dockerspring.component.CommonComponent;
+import gq.zhuzhibin.open.dockerspring.service.UserService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +16,12 @@ public class MainController {
     @Resource
     private CommonComponent commonComponent;
 
+    @Resource
+    private UserService userService;
+
     @RequestMapping("test")
     public String index(){
+        userService.add();
         return commonComponent.test();
     }
 }
