@@ -2,3 +2,16 @@ spring:
   datasource:
     driver-class-name: org.sqlite.JDBC
     url: jdbc:sqlite:/Users/zhuzhibin/data/idea/docker-spring/src/main/resources/docker-spring.db
+# 解决静态资源中文乱码问题！
+server:
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+  tomcat:
+    uri-encoding: UTF-8
+
+
+my-config:
+  media-location: /Users/zhuzhibin/Music/网易云音乐/
+  media-url: /media/

@@ -2,16 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>music-list</title>
     <script src="/static/js/jquery-3.6.0.min.js" ></script>
 </head>
 <body>
 main
+<div id="music-list">
+
+</div>
+<audio id="music-controls" controls>
+    您的浏览器不支持 audio 元素。
+</audio>
 </body>
 <script>
     $(document).ready(function(){
-        $.ajax("/api/test",function (data){
-            console.log(data);
+        $.ajax({
+            dataType:'json',
+            success:function (response){
+                console.log(response)
+                // window.musicList = response;
+                $.each(response, function (i,data){
+                    $("#music-list").append('<li>'+ data +'</li>')
+                    $("#music-list").append('<source src="'+ data +'" type="audio/mpeg">')
+                })
+
+            },
+            url:"/api/musicList"
         })
     });
 
