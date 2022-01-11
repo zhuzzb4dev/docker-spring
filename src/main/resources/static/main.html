@@ -22,8 +22,8 @@ main
                 console.log(response)
                 // window.musicList = response;
                 $.each(response, function (i,data){
-                    $("#music-list").append('<li>'+ data +'</li>')
-                    $("#music-list").append('<source src="'+ data +'" type="audio/mpeg">')
+                    $("#music-list").append('<li>'+ data.title +'</li>')
+                    $("#music-controls").append('<source src="'+ data._id +'" type="audio/mpeg">')
                 })
 
             },

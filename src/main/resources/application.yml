@@ -2,6 +2,9 @@ spring:
   datasource:
     driver-class-name: org.sqlite.JDBC
     url: jdbc:sqlite:/Users/zhuzhibin/data/idea/docker-spring/src/main/resources/docker-spring.db
+  data:
+    mongodb:
+      uri: mongodb://admin:123456@192.168.1.240:27017/admin
 # 解决静态资源中文乱码问题！
 server:
   servlet:
