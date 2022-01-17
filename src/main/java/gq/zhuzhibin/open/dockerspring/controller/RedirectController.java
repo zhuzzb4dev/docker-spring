@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.io.IOException;
@@ -25,14 +26,17 @@ public class RedirectController {
     private MongoTemplate mongoTemplate;
 
     @RequestMapping("musicGet/{_id}")
-    public String musicGet(@PathVariable String _id) throws InvalidDataException, UnsupportedTagException, IOException {
+    public ModelAndView musicGet(@PathVariable String _id, ModelAndView mv) throws InvalidDataException, UnsupportedTagException, IOException {
         Query query=new Query(Criteria.where("_id").is(_id));
         Music one = mongoTemplate.findOne(query, Music.class);
         if (Objects.nonNull(one)) {
             String fileName = one.getFileName();
-            return "redirect:" + myConfig.getMediaUrl() + fileName;
+//            return "redirect:" + myConfig.getMediaUrl() + fileName;
+            mv.setViewName(myConfig.getMediaUrl() + fileName);
+        } else {
+            mv.setViewName("404");
         }
-        return "404";
+        return mv;
     }
 
 }
